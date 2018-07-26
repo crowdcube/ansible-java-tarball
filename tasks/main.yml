@@ -1,0 +1,29 @@
+---
+
+- name: Download OpenJDK 10 tarball
+  get_url:
+    url: "{{ openjdk_url }}"
+    dest: /tmp/{{ openjdk_tar_filename }}.tar.gz
+    mode: 0400
+    checksum: "{{ openjdk_checksum }}"
+
+- name: Unarchive the OpenJDK tarball
+  unarchive:
+    src: /tmp/{{ openjdk_tar_filename }}.tar.gz
+    dest: "{{ openjdk_dest_folder }}"
+    remote_src: yes
+
+- name: Update Java alternatives to select OpenJDK
+  alternatives:
+    name: openjdk
+    path: /opt/{{ openjdk_foldername }}/bin/java
+    link: /usr/bin/java
+    priority: "1"
+
+# Environment setup.
+- name: Set JAVA_HOME if configured.
+  template:
+    src: java_home.sh.j2
+    dest: /etc/profile.d/java_home.sh
+    mode: 0644
+  when: java_home is defined and java_home != ''
