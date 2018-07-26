@@ -4,3 +4,13 @@
 # java_packages: []
 
 java_home: ""
+
+openjdk_url: https://download.java.net/java/GA/jdk10/10.0.2/19aef61b38124481863b1413dce1855f/13/openjdk-10.0.2_linux-x64_bin.tar.gz
+
+openjdk_tar_filename: openjdk-10
+
+openjdk_dest_folder: /opt
+
+openjdk_checksum: sha256:f3b26abc9990a0b8929781310e14a339a7542adfd6596afb842fa0dd7e3848b2
+
+openjdk_foldername: jdk-10.0.2
