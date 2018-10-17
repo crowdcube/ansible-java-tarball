@@ -20,6 +20,14 @@
     link: /usr/bin/java
     priority: "1"
 
+- name: Update Javac alternatives to select OpenJDK
+  alternatives:
+    name: openjdk-javac
+    path: /opt/{{ openjdk_foldername }}/bin/javac
+    link: /usr/bin/javac
+    priority: "1"
+
+
 # Environment setup.
 - name: Set JAVA_HOME if configured.
   template:
